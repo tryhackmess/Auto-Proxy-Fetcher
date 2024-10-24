@@ -20,7 +20,7 @@ class ProxyFetcher:
             'https://raw.githubusercontent.com/roosterkid/openproxylist/main/HTTPS_RAW.txt',
             'https://raw.githubusercontent.com/RX4096/proxy-list/main/online/http.txt',
             
-            # API Sources (kostenlos)
+            # API Sources (free)
             'https://proxylist.geonode.com/api/proxy-list?limit=500&page=1&sort_by=lastChecked&sort_type=desc&protocols=http%2Chttps',
             'https://www.proxy-list.download/api/v1/get?type=http',
             'https://www.proxy-list.download/api/v1/get?type=https'
