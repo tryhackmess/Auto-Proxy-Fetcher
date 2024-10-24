@@ -1,3 +1,7 @@
+# Auto Proxy Fetcher
+# Automatically fetch and update proxy lists from multiple sources using GitHub Actions.
+# Copyright (c) 2024 Volkan Kücükbudak
+# url: https://github.com/VolkanSah/Auto-Proxy-Fetcher
 import aiohttp
 import asyncio
 from bs4 import BeautifulSoup
