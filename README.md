@@ -4,7 +4,7 @@ Automatischer Proxy-Server Fetcher mit GitHub Actions.
 
 ## Features
 
-- Automatisches Fetchen von Proxy-Servern alle 6 Stunden
+- Automatisches Fetchen von Proxy-Servern alle 6 Stunden von verschiedenen Quellen
 - Validierung der Proxies
 - Automatisches Update der `proxies.txt`
 - GitHub Actions Workflow
