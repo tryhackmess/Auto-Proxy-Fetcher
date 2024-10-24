@@ -61,3 +61,8 @@ If you want to use this tool on your own GitHub account and customize the workfl
    - It will update `proxies.txt` with the latest proxy list and commit it to your repository.
 
 By following these steps, you'll have your own proxy fetching tool running on GitHub Actions with customized settings.
+
+Your support is greatly appreciated. If you find MiniGreX CMS useful, consider ⭐ the project on GitHub or becoming a [Sponsor](https://github.com/sponsors/volkansah).
+
+### copyright 
+**S. Volkan Kücükbudak**
