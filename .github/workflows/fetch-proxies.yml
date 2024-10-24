@@ -1,35 +1,40 @@
-name: Fetch Proxy Servers
+name: Auto Proxy Fetch
 
 on:
   schedule:
     - cron: '0 */6 * * *'  # Läuft alle 6 Stunden
-  workflow_dispatch:  # Ermöglicht manuelles Auslösen
+  workflow_dispatch:        # Manueller Trigger
+  push:
+    paths:
+      - 'fetch_proxies.py' # Läuft wenn das Script geändert wird
 
 jobs:
-  fetch-proxies:
+  fetch-and-update:
     runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write     # Erlaubt das Pushen von Änderungen
       
-      - name: Set up Python
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-          
+          python-version: '3.10'
+          cache: 'pip'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4 aiohttp
+          pip install -r requirements.txt
 
-      - name: Fetch proxies
-        run: |
-          python fetch_proxies.py
-        
-      - name: Commit and push changes
+      - name: Run proxy fetcher
+        run: python fetch_proxies.py
+
+      - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add proxies.txt
-          git commit -m "Update proxy list [skip ci]" || exit 0
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Update proxy list [skip ci]" && git push)
